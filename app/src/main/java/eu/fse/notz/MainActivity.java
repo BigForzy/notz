@@ -14,19 +14,19 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
+
     private String [] myDataset = {"nota ","prova","cane","salah"};
 
     @Override
 
-    protected void onCreate(Bundle savedIstanceState){
-        super.onCreate(savedIstanceState);
+    protected void onCreate(Bundle savedInstanceState){
+        super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        mRecyclerView = (RecyclerView) findViewById(R.id.notes_recycler_view);
+        mRecyclerView = (RecyclerView) findViewById(R.id.notes_rv);
 
         mRecyclerView.setHasFixedSize(true);
 
         mLayoutManager = new LinearLayoutManager(this);
-
         mRecyclerView.setLayoutManager(mLayoutManager);
 
         mAdapter = new NotesAdapter(myDataset);

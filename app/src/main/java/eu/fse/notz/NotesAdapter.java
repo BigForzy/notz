@@ -5,27 +5,33 @@ import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
 /**
  * Created by Amministratore on 12/04/2018.
  */
 
 public class NotesAdapter extends RecyclerView.Adapter {
 
-    private String[] mDataset;
+    private ArrayList<Note> mDataset;
+
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
 
-        public TextView mTextView;
 
+
+        public TextView mTextView;
         public ViewHolder(TextView v) {
             super(v);
             mTextView = v;
         }
     }
 
-    public NotesAdapter(String[] myDataset) {
+    public NotesAdapter(String[] myDataset){
         mDataset = myDataset;
     }
+
+
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -40,11 +46,15 @@ public class NotesAdapter extends RecyclerView.Adapter {
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         NotesAdapter.ViewHolder noteVH = (NotesAdapter.ViewHolder) holder;
-        noteVH.mTextView.setText(mDataset[position]);
+        Note currentNote = mDataset.get(position);
+        noteVH.mTextView.setText(currentNote.getTitle());
     }
+
+
+
 
     @Override
     public int getItemCount() {
-        return mDataset.length;
+        return mDataset.size();
     }
 }
